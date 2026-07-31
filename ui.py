@@ -13,21 +13,16 @@ class View(QWidget):
         self.initUI()
         
     def initUI(self):
-        
         self.te1 = QPlainTextEdit()
         self.te1.setReadOnly(True)
         
         self.btn1=QPushButton('Calc',self)
         self.btn2=QPushButton('clear',self)
-        
+    
         self.le1=QLineEdit('0',self)
         self.le1.setAlignment(QtCore.Qt.AlignRight)
-        self.le1.setFocus(True)
+        self.le1.setFocus()
         self.le1.selectAll()
-    
-    def setDisplay(self):
-        self.te1.appendPlainText("Button clicked!")
-        
         
         self.le2=QLineEdit('0',self)
         self.le2.setAlignment(QtCore.Qt.AlignRight)
@@ -41,12 +36,9 @@ class View(QWidget):
         hbox_formular.addWidget(self.le2)
         
         hbox = QHBoxLayout()
-        hbox.addStretch(1)
-        hbox.addWidget(self.btn1)
-        hbox.addWidget(self.btn2)
         
-        vbox=QVBoxLayout()
-        vbox.addWidget(self.te1)
+        vbox = QVBoxLayout()
+        vbox.addWidget(self)
         vbox.addLayout(hbox_formular)
         vbox.addLayout(hbox)
         vbox.addStretch(1)
@@ -55,13 +47,13 @@ class View(QWidget):
         
         self.setWindowTitle('Calculator')
         self.setWindowIcon(QIcon('icon.png'))
-        self.resize(256,256)
-        self.show()
-    
-    def activateMessage(self, text):
+        self.resize(350,450)
+        
+    def setDisplay(self, text="Button Clicked"):
+        if not isinstance(text, str):
+            text = "Button clicked!"
         self.te1.appendPlainText(text)
     
     def clearMessage(self):
         self.te1.clear()
-    
     
