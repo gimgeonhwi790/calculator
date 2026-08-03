@@ -38,7 +38,7 @@ class View(QWidget):
         hbox = QHBoxLayout()
         
         vbox = QVBoxLayout()
-        vbox.addWidget(self)
+        vbox.addWidget(self.te1)
         vbox.addLayout(hbox_formular)
         vbox.addLayout(hbox)
         vbox.addStretch(1)
@@ -47,11 +47,9 @@ class View(QWidget):
         
         self.setWindowTitle('Calculator')
         self.setWindowIcon(QIcon('icon.png'))
-        self.resize(350,450)
+        self.resize(256,256)
         
     def setDisplay(self, text="Button Clicked"):
-        if not isinstance(text, str):
-            text = "Button clicked!"
         self.te1.appendPlainText(text)
     
     def clearMessage(self):
